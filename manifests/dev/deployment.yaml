@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gh-nodejs-app
-  namespace: dev
+  name: {{ CONTAINER_NAME }}
+  namespace: {{ DEPARTMENT }}
   labels:
-    app: gh-nodejs-app
+    app: {{ CONTAINER_NAME }}
     env: dev
 spec:
   selector:
     matchLabels:
-      app: gh-nodejs-app
+      app: {{ CONTAINER_NAME }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -19,38 +19,14 @@ spec:
   template:
     metadata:
       labels:
-        app: gh-nodejs-app
+        app: {{ CONTAINER_NAME }}
     spec:
       containers:
-      - name: gh-nodejs-app2
+      - name: {{ CONTAINER_NAME }}
         image: {{ IMAGE_CONTAINER }}
-        #image: docker.io/aquasaemea/gh-nodejs-app2:latest
         imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 3000
       imagePullSecrets:
       - name: github-aquasaemea-dockerhub
-#  docker.io/aquasaemea/saemea-app:11
-#        livenessProbe:
-#          httpGet:
-#            path: /index.html
-#            port: 3000
-#            scheme: HTTP
-#          initialDelaySeconds: 2
-#          periodSeconds: 5
-#          timeoutSeconds: 2
-#        readinessProbe:
-#          exec:
-#            command:
-#            - /bin/ls 
-#            - /tmp/ready
-#          initialDelaySeconds: 2
-#          timeoutSeconds: 1
-#        resources:
-#          limits:
-#            memory: "64Mi"
-#            cpu: "500m"
-#          requests:
-#            memory: "32Mi"
-#            cpu: "250m"
