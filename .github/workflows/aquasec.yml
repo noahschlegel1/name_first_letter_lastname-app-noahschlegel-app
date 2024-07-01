@@ -9,8 +9,9 @@ on:
       # comment0
       
 env:
-   DOCKER_REPOSITORY: andresguisado # <dockerhub name> name of Docker Hub ID
-   CONTAINER_NAME: andresg-app # <name + first letter of your last name> e.g andresg-app
+   DEPARTMENT: sdr  #e.g sdr, csm
+   DOCKER_REPOSITORY: andresguisado #<dockerhub name> e.g andresguisado
+   CONTAINER_NAME: andresg-app #<name + first letter of your last name> e.g andresg-app
    IMAGE_NAME: gh-nodejs-app
    IMAGE_TAG: ${{ github.run_number }} # $GITHUB_RUN_NUMBER - don't need to do anything
 
@@ -42,11 +43,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
 
-      - name: Upload HTML file to artifact
-        uses: actions/upload-artifact@v4
-        with:
-         name: Aqua Image Scan Report
-         path: .github/workflows/code_scan_results.html
          
   CI-Build:
     needs: CI-Code
