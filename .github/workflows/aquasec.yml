@@ -10,8 +10,8 @@ on:
       
 env:
    DEPARTMENT: sdr  #e.g sdr, csm
-   DOCKER_REPOSITORY: andresguisado #<dockerhub name> e.g andresguisado
-   CONTAINER_NAME: andresg-app #<name + first letter of your last name> e.g andresg-app
+   DOCKER_REPOSITORY: noahschlegel #<dockerhub name> e.g andresguisado
+   CONTAINER_NAME: noahs-app #<name + first letter of your last name> e.g andresg-app
    IMAGE_NAME: gh-nodejs-app
    IMAGE_TAG: ${{ github.run_number }} # $GITHUB_RUN_NUMBER - don't need to do anything
 
